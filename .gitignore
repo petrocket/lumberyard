@@ -132,3 +132,5 @@
 /dev/SetupAssistantUserPreferences.ini
 /dev/_WAF_/environment.json
 /SetupAssistant.bat
+filehashes.json
+!.gitmodules
