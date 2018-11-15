@@ -10,3 +10,6 @@
 [submodule "dev/Gems/SpaceKit"]
 	path = dev/Gems/SpaceKit
 	url = https://petrocket@bitbucket.org/petrocket/spacekit.git
+[submodule "dev/flite"]
+	path = dev/flite
+	url = https://petrocket@bitbucket.org/petrocket/flite.git
