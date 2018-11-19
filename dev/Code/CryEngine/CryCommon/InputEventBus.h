@@ -59,7 +59,6 @@ namespace AZ
         virtual void OnReleased(float /*Value*/) {}
     };
     using InputEventNotificationBus = AZ::EBus<InputEventNotifications>;
-
 } // namespace AZ
 
 

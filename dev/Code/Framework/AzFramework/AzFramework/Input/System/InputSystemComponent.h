@@ -84,7 +84,7 @@ namespace AzFramework
         ////////////////////////////////////////////////////////////////////////////////////////////
         //! \ref AzFramework::InputSystemRequests::TickInput
         void TickInput() override;
-
+        
         ////////////////////////////////////////////////////////////////////////////////////////////
         //! \ref AzFramework::InputSystemRequests::RecreateEnabledInputDevices
         void RecreateEnabledInputDevices() override;
@@ -125,5 +125,6 @@ namespace AzFramework
         // Other Variables
         bool m_currentlyUpdatingInputDevices;   //!< Are we currently updating input devices?
         bool m_recreateInputDevicesAfterUpdate; //!< Should we recreate devices after update?
+
     };
 } // namespace AzFramework

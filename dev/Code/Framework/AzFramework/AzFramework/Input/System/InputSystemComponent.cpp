@@ -206,11 +206,13 @@ namespace AzFramework
     ////////////////////////////////////////////////////////////////////////////////////////////////
     void InputSystemComponent::Deactivate()
     {
+        // [LY-84404 Local Multiplayer Input Patch] disconnect/destroy in reverse order of connect/create
         AZ::TickBus::Handler::BusDisconnect();
         InputSystemRequestBus::Handler::BusDisconnect();
 
         // Destroy all enabled input devices
         DestroyEnabledInputDevices();
+        // [LY-84404 Local Multiplayer Input Patch] end
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
