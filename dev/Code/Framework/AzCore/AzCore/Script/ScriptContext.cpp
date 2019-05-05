@@ -3841,7 +3841,8 @@ LUA_API const Node* lua_getDummyNode()
                 bool callSuccess = Internal::LuaSafeCall(lua, numParameters + 1, result ? 1 : 0);  // + 1 for the table parameter
                 if (callSuccess && result)
                 {
-                    ud->m_result(lua, -1, *result, ud->m_resultClass, nullptr);
+                    ScriptContext::StackVariableAllocator tempData;
+                    ud->m_result(lua, -1, *result, ud->m_resultClass, &tempData);
                     lua_pop(lua, 1); // remove the return value now that we've captured it
                 }
             }
