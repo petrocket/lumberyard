@@ -1,3 +1,15 @@
 [submodule "dev/hope"]
 	path = dev/hope
 	url = https://github.com/petrocket/hope.git
+[submodule "dev/Gems/DynamicMesh"]
+	path = dev/Gems/DynamicMesh
+	url = https://petrocket@bitbucket.org/petrocket/dynamicmesh.git
+[submodule "dev/Gems/ProceduralMesh"]
+	path = dev/Gems/ProceduralMesh
+	url = https://petrocket@bitbucket.org/petrocket/proceduralmesh.git
+[submodule "dev/Gems/ToolKit"]
+	path = dev/Gems/ToolKit
+	url = https://petrocket@bitbucket.org/petrocket/toolkit.git
+[submodule "dev/Gems/SpaceKit"]
+	path = dev/Gems/SpaceKit
+	url = https://petrocket@bitbucket.org/petrocket/spacekit.git
