@@ -82,6 +82,10 @@ namespace RoadsAndRivers
                 Event("Rebuild", &RoadRequestBus::Events::Rebuild)->
                 Event("SetIgnoreTerrainHoles", &RoadRequestBus::Events::SetIgnoreTerrainHoles)->
                 Event("GetIgnoreTerrainHoles", &RoadRequestBus::Events::GetIgnoreTerrainHoles)->
+// alexpete Make sectors visible start
+                Event("GetNumSegments", &RoadRequestBus::Events::GetNumSegments)->
+                Event("SetSegmentVisible", &RoadRequestBus::Events::SetSegmentVisible)->
+// alexpete Make sectors visible end
                 VirtualProperty("IgnoreTerrainHoles", "GetIgnoreTerrainHoles", "SetIgnoreTerrainHoles")
             ;
         }
@@ -198,6 +202,17 @@ namespace RoadsAndRivers
         UpdateRenderNodeWithAssetMaterial();
     }
 
+// alexpete Make sectors visible start
+    int Road::GetNumSegments()
+    {
+        return GetGeometrySectors().size();
+    }
+
+    void Road::SetSegmentVisible(int segment, bool visible)
+    {
+        SetSectorVisible(segment, visible);
+    }
+// alexpete Make sectors visible end
     void Road::GenerateRenderNodes()
     {
         m_roadRenderNodes.clear();
@@ -246,8 +261,21 @@ namespace RoadsAndRivers
 
             for (int i = 0; i < sectorsNum; ++i)
             {
-                vertices.push_back(geometrySectors[startSecId + i].points[0]);
-                vertices.push_back(geometrySectors[startSecId + i].points[1]);
+// alexpete Make sectors visible start
+                if (!geometrySectors[startSecId + i].visible)
+                {
+                    // create degenerate section so it doesn't get drawn
+                    vertices.push_back(geometrySectors[startSecId + i].points[0]);
+                    vertices.push_back(geometrySectors[startSecId + i].points[0]);
+                }
+                else
+                {
+// alexpete Make sectors visible end
+                    vertices.push_back(geometrySectors[startSecId + i].points[0]);
+                    vertices.push_back(geometrySectors[startSecId + i].points[1]);
+// alexpete Make sectors visible start
+                }
+// alexpete Make sectors visible end
             }
 
             auto& lastSector = geometrySectors[startSecId + sectorsNum - 1];            

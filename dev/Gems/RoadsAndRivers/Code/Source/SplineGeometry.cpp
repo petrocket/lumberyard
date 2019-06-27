@@ -201,6 +201,10 @@ namespace RoadsAndRivers
 
         for (auto& sector : m_roadSectors)
         {
+// alexpete Make sectors visible start
+            if(sector.visible)
+            {
+// alexpete Make sectors visible end 
             debugDisplay.DrawLine(sector.points[0], sector.points[1]);
             for (size_t k = 0; k < sector.points.size(); k += 2)
             {
@@ -211,6 +215,9 @@ namespace RoadsAndRivers
                     debugDisplay.DrawLine(sector.points[k + 2], sector.points[k]);
                 }
             }
+// alexpete Make sectors visible start
+            }
+// alexpete Make sectors visible end 
         }
 
         debugDisplay.PopMatrix();
@@ -277,6 +284,12 @@ namespace RoadsAndRivers
         vertices.reserve(m_roadSectors.size() * 4);
         for (auto& sector : m_roadSectors)
         {
+// alexpete Make sectors visible start
+            //if (!sector.visible)
+            //{
+            //    continue;
+            //}
+// alexpete Make sectors visible end
             vertices.push_back(sector.points[0]);
             vertices.push_back(sector.points[1]);
             vertices.push_back(sector.points[2]);

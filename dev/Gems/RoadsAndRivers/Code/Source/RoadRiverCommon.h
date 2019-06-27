@@ -58,6 +58,10 @@ namespace RoadsAndRivers
 
         float t0 = 0.0f;
         float t1 = 0.0f;
+
+// alexpete Make sectors visible start
+        bool visible = true;
+// alexpete Make sectors visible end
     };
 
     /**

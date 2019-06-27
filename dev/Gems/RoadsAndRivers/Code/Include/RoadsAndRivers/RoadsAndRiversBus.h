@@ -39,6 +39,10 @@ namespace RoadsAndRivers
          */
         virtual bool GetIgnoreTerrainHoles() { return false; }
 
+// alexpete Make sectors visible start
+        virtual int GetNumSegments() { return 0; }
+        virtual void SetSegmentVisible(int segment, bool visible) {}
+// alexpete Make sectors visible end
     };
     using RoadRequestBus = AZ::EBus<RoadRequests>;
 

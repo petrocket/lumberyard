@@ -99,6 +99,16 @@ namespace RoadsAndRivers
         void BuildSplineMesh();
         const AZStd::vector<SplineGeometrySector>& GetGeometrySectors() const { return m_roadSectors; }
         const SplineGeometryWidthModifier& GetWidthModifiers() const { return m_widthModifiers; }
+// alexpete Make sectors visible start
+        void SetSectorVisible(int sector, bool visible)
+        {
+            if (sector >= 0 && sector < m_roadSectors.size())
+            {
+                m_roadSectors[sector].visible = visible;
+            }
+        }
+// alexpete Make sectors visible end
+
 
         /**
          * Draws spline geometry in the editor viewport

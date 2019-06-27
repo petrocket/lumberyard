@@ -63,6 +63,11 @@ namespace RoadsAndRivers
         void SetIgnoreTerrainHoles(bool ignoreTerrainHoles) override;
         bool GetIgnoreTerrainHoles() override;
 
+// alexpete Make sectors visible start
+        int GetNumSegments() override;
+        void SetSegmentVisible(int segment, bool visible) override;
+// alexpete Make sectors visible end
+
         /**
          * Triggers full rebuild of the road object, including geometry and render node generation
          */
