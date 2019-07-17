@@ -193,12 +193,12 @@ namespace PhysX
 
     void SystemComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& required)
     {
-        (void)required;
+        AZ_UNUSED(required)
     }
 
     void SystemComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& dependent)
     {
-        (void)dependent;
+        AZ_UNUSED(dependent)
     }
 
     SystemComponent::SystemComponent()
@@ -673,6 +673,22 @@ namespace PhysX
         // Load configuration from asset cache
         AZStd::string assetRoot, fullpath;
         EBUS_EVENT_RESULT(assetRoot, AzFramework::ApplicationRequests::Bus, GetAssetRoot);
+
+        // alexpete start Fix PhysX not loading game physxconfiguration
+        // LmbrCentral updates the asset root path to point to @assets@ and we depend on that path
+        // so we depend on LmbrCentral and must activate after it
+        // assetRoot is set by LmbrCentral and it may not activate till after us so
+        // grab asset root based on alias
+        AZ::IO::FileIOBase* fileIO = AZ::IO::FileIOBase::GetInstance();
+        if (fileIO)
+        {
+            const char* aliasPath = fileIO->GetAlias("@assets@");
+            if (aliasPath && aliasPath[0] != '\0')
+            {
+                assetRoot = aliasPath;
+            }
+        }
+        // alexpete end Fix PhysX not loading game physxconfiguration
 
         AZStd::string fullPath;
         AzFramework::StringFunc::Path::Join(assetRoot.c_str(), m_configurationPath.c_str(), fullPath);
