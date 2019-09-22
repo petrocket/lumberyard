@@ -1,0 +1,6 @@
+[submodule "dev/treehouse"]
+	path = dev/treehouse
+	url = git@bitbucket.org:petrocket/treehouse.git
+[submodule "dev/Gems/ToolKit"]
+	path = dev/Gems/ToolKit
+	url = git@bitbucket.org:petrocket/toolkit.git
