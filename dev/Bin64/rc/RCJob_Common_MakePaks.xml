@@ -1,0 +1,37 @@
+<RCJobs>
+    <!--
+        DefaultProperties can be overriden from command line.
+    -->
+    <DefaultProperties
+        p="pc"
+        game="samplesproject"
+        src="cache\${game}\${p}"
+        trg="common_${p}_paks"
+    />
+
+    <Properties
+        sounds_pak_types="sounds\*.*"
+        sounds_pak_excludes=""
+
+        shader_pak_types="shaders\*.ext;shaders\*.cfi;shaders\*.cfx"
+        shader_pak_excludes=""
+
+        engine_pak_types="fonts\*.*;engineassets\*.*;config\*.*;editor\*.*;entities\*.*;libs\posteffectgroups\*.*;libs\smartobjects\*.*;libs\flownodes\*.*;objects\default\*.*;materials\*_layers_default.mtl;materials\*_terrain_default.mtl;scripts\entities\*.*;scripts\utils\*.*;scripts\enginecommon.lua;textures\defaults\*.*;textures\skys\night\*.*;textures\default_icon.*"
+        engine_pak_excludes="config\editor.xml;config\game.xml"
+
+        src_game="${src}\${game}"
+        trg_paks="${trg}\${game}"
+    />
+
+    <!--
+        Pack everything else up from the cache.
+    -->
+    <PakJob>
+        <Job sourceroot="${src_game}" input="${sounds_pak_types}" zip="${trg_paks}\sounds.pak" exclude="${sounds_pak_excludes}" zip_compression="0" />
+
+        <Job sourceroot="${src_game}" input="${shader_pak_types}" zip="${trg_paks}\shaders.pak" exclude="${shader_pak_excludes}" />
+        <Job sourceroot="${src_game}" input="${engine_pak_types}" zip="${trg_paks}\engine.pak" exclude="${engine_pak_excludes}" />
+
+    </PakJob>
+    <Run Job="PakJob"/>
+</RCJobs>
