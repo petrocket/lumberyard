@@ -4757,7 +4757,21 @@ void CD3D9Renderer::RT_EndFrame(bool isLoading)
 
             if (m_CurrContext->m_pSwapChain)
             {
-                hReturn = m_CurrContext->m_pSwapChain->Present(0, dwFlags);
+// alexpete start Allow vsync in editor for main viewport (r_vsync change only detected on editor start)
+                if (m_CurrContext->m_bMainViewport)
+                {
+                    DWORD syncInterval = ComputePresentInterval(m_devInfo.SyncInterval() != 0, m_devInfo.RefreshRate().Numerator, m_devInfo.RefreshRate().Denominator);
+                    DWORD presentFlags = m_devInfo.PresentFlags();
+                    hReturn = m_CurrContext->m_pSwapChain->Present(syncInterval, presentFlags);
+                }
+                else
+                {
+// alexpete end Allow vsync in editor for main viewport
+                    hReturn = m_CurrContext->m_pSwapChain->Present(0, dwFlags);
+// alexpete start Allow vsync in editor for main viewport
+                }
+// alexpete end Allow vsync in editor for main viewport
+
                 if (hReturn == DXGI_ERROR_INVALID_CALL)
                 {
                     assert(0);
