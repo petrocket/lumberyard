@@ -118,12 +118,18 @@ namespace ScriptEvents
         
         const AZStd::string& busName = definition.GetName();
 
+        // alexpete fix lua script events start
+        // the bus may be registered with behaviorContext but the script event may not exist 
+        // calling CompleteRegistration causes the bus to be re-created/registered
+        /*
         const auto& ebusIterator = behaviorContext->m_ebuses.find(busName);
         if (ebusIterator != behaviorContext->m_ebuses.end())
         {
             AZ_Warning("Script Events", false, "A Script Event by the name of %s already exists, this definition will be ignored. Do not call Register for Script Events referenced by asset.", busName.c_str());
             return;
         }
+        */
+        // alexpete fix lua script events end
 
         const AZ::Uuid& assetId = AZ::Uuid::CreateName(busName.c_str());
         ScriptEventKey key(assetId, 0);

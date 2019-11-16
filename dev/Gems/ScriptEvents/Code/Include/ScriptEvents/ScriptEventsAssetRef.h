@@ -74,9 +74,22 @@ namespace ScriptEvents
                     ->Attribute(AZ::Script::Attributes::Storage, AZ::Script::Attributes::StorageType::Value)
                     ->Attribute(AZ::Script::Attributes::ConstructibleFromNil, false)
                     ->Method("Get", &ScriptEventsAssetRef::GetDefinition)
+            // alexpete fix lua script events start
+                    ->Method("GetName", &ScriptEventsAssetRef::GetName)
+            // alexpete fix lua script events end
                     ;
             }
         }
+            // alexpete fix lua script events start
+        AZStd::string GetName() const
+        {
+            if (ScriptEventsAsset *ebusAsset = m_asset.GetAs<ScriptEventsAsset>())
+            {
+                return ebusAsset->m_definition.GetName();
+            }
+            return "Not Found";
+        }
+            // alexpete fix lua script events end
 
         ScriptEventsAssetRef() = default;
 
@@ -86,6 +99,10 @@ namespace ScriptEvents
             , m_userData(userData)
         {
             SetAsset(asset);
+
+            // alexpete fix lua script events start
+            Load(false);
+            // alexpete fix lua script events end
         }
 
         ~ScriptEventsAssetRef()

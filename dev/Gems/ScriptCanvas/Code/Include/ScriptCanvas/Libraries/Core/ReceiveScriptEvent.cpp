@@ -581,7 +581,10 @@ namespace ScriptCanvas
                     AZ::BehaviorContext* behaviorContext = nullptr;
                     AZ::ComponentApplicationBus::BroadcastResult(behaviorContext, &AZ::ComponentApplicationBus::Events::GetBehaviorContext);
                     
-                    const auto& ebusIterator = behaviorContext->m_ebuses.find(m_definition.GetBehaviorContextName());
+            // alexpete fix lua script events start
+                    //const auto& ebusIterator = behaviorContext->m_ebuses.find(m_definition.GetBehaviorContextName());
+                    const auto& ebusIterator = behaviorContext->m_ebuses.find(m_definition.GetName());
+            // alexpete fix lua script events end
                     if (ebusIterator == behaviorContext->m_ebuses.end())
                     {
                         AZ_Error("Script Canvas", false, "ReceiveScriptEvent::CreateHandler - No ebus by name of %s in the behavior context!", m_definition.GetName().c_str());

@@ -149,7 +149,11 @@ namespace ScriptEvents
                 bus->m_events[methodName].m_broadcast = aznew ScriptEventBroadcast(behaviorContext, definition, methodName);
             }
 
-            behaviorContext->m_ebuses[definition.GetBehaviorContextName()] = bus;
+
+            // alexpete fix lua script events start
+            //behaviorContext->m_ebuses[definition.GetBehaviorContextName()] = bus;
+            behaviorContext->m_ebuses[definition.GetName()] = bus;
+            // alexpete fix lua script events end
 
             return bus;
         }
