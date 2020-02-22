@@ -1225,7 +1225,9 @@ static int Global__Index(lua_State* l)
     if (lua_isnil(l, -1))
     {
         // we did not found the element in the table trigger an error
-        ScriptContext::FromNativeContext(l)->Error(ScriptContext::ErrorType::Warning, true, "Access to undeclared global variable '%s'", lua_tostring(l, -2));
+        // alexpete start - Disable undeclared global - this happens in Lua when you use the Global table
+        // ScriptContext::FromNativeContext(l)->Error(ScriptContext::ErrorType::Warning, true, "Access to undeclared global variable '%s'", lua_tostring(l, -2));
+        // alexpete end
     }
     else
     {
