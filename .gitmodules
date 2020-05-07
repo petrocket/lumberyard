@@ -13,3 +13,6 @@
 [submodule "dev/flite"]
 	path = dev/flite
 	url = https://petrocket@bitbucket.org/petrocket/flite.git
+[submodule "dev/Gems/TracyProfiler"]
+	path = dev/Gems/TracyProfiler
+	url = https://github.com/petrocket/TracyProfilerGem
