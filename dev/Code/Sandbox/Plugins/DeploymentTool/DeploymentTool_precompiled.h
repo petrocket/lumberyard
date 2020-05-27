@@ -14,6 +14,10 @@
 #include <AzCore/PlatformDef.h>
 
 #if defined(AZ_PLATFORM_WINDOWS)
+// alexpete integrate Tracy Profiler start
+#define WINDOWS_LEAN_AND_MEAN
+#define NOMINMAX
+// alexpete integrate Tracy Profiler end
     #include <WinSock2.h>
     #include <ws2tcpip.h>
 #elif defined(AZ_PLATFORM_MAC)

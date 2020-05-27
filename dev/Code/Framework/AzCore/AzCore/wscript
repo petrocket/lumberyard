@@ -31,6 +31,7 @@ def build(bld):
                            'LZ4',
                            'ZLIB',
                            'RAD_TELEMETRY',
+                           'TRACY_PROFILER',
                            'UNWIND'],
         test_all_use    = ['GMOCK'],
         defines         = list(defines),

@@ -11,6 +11,11 @@
 */
 // Original file Copyright Crytek GMBH or its affiliates, used under license.
 
+// alexpete integrate Tracy Profiler start
+#define WINDOWS_LEAN_AND_MEAN
+#define NOMINMAX
+// alexpete integrate Tracy Profiler end
+
 #include <FileIOHandler_wwise.h>
 #include <AzCore/IO/Streamer.h>
 

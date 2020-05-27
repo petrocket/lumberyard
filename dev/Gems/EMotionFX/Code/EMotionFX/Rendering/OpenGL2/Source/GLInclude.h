@@ -10,7 +10,10 @@
 *
 */
 
-
+// alexpete integrate Tracy Profiler start
+#define WINDOWS_LEAN_AND_MEAN
+#define NOMINMAX
+// alexpete integrate Tracy Profiler end
 #include <AzCore/PlatformDef.h>
 
 #include <GL/glew.h>

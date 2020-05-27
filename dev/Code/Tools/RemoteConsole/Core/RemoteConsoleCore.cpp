@@ -9,6 +9,12 @@
 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 *
 */
+
+// alexpete integrate Tracy Profiler start
+#define WINDOWS_LEAN_AND_MEAN
+#define NOMINMAX
+// alexpete integrate Tracy Profiler end
+
 #include <AzCore/PlatformDef.h>
 #include <AzCore/Socket/AzSocket.h>
 

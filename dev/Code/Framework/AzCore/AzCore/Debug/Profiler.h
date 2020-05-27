@@ -142,6 +142,12 @@ namespace AZ
 #   include <RADTelemetry/ProfileTelemetry.h>
 #endif
 
+// alexpete integrate Tracy Profiler start
+#ifdef TRACY_ENABLE 
+#   include <TracyProfiler/TracyProfiler.h>
+#endif
+// alexpete integrate Tracy Profiler end
+
 #if defined(AZ_PROFILER_MACRO_DISABLE) // by default we never disable the profiler registers as their overhead should be minimal, you can still do that for your code though.
 #   define AZ_PROFILE_TIMER(...)
 #   define AZ_PROFILE_TIMER_END(_SectionVariableName)
