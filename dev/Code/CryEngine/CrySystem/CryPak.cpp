@@ -1632,7 +1632,7 @@ AZ::IO::HandleType CCryPak::FOpen(const char* pName, const char* szMode, unsigne
     }
 
     const char* szFullPath = AdjustFileName(pName, szFullPathBuf, AZ_ARRAY_SIZE(szFullPathBuf), nAdjustFlags);
-    AZ_PROFILE_SCOPE_DYNAMIC(AZ::Debug::ProfileCategory::Game, "File: %s Pak: %p", szFullPath, this);
+    //AZ_PROFILE_SCOPE_DYNAMIC(AZ::Debug::ProfileCategory::Game, "File: %s Pak: %p", szFullPath, this);
     if (nOSFlags & (_O_WRONLY | _O_RDWR))
     {
         CheckFileAccessDisabled(szFullPath, szMode);
